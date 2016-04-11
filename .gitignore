@@ -1,0 +1,5 @@
+.idea
+client/vendor
+client/js/**/*.js
+!client/js/system.conf.js
+node_modules
