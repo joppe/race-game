@@ -63,17 +63,10 @@ export class Canvas {
 
     /**
      * @param {string} src
-     * @param {number} x
-     * @param {number} y
-     * @param {number} [width]
-     * @param {number} [height]
-     * @param {number} [sx]
-     * @param {number} [xy]
-     * @param {number} [sWidth]
-     * @param {number} [sHeight]
+     * @param {Array} args
      * @returns {Promise}
      */
-    drawImage(src, x, y, width, height, sx, xy, sWidth, sHeight) {
+    drawImage(src, ...args) {
         return new Promise((resolve, reject) => {
             Loader
                 .load(src)
@@ -82,7 +75,7 @@ export class Canvas {
 
                     image.setAttribute('src', src);
 
-                    this.getContext().drawImage(image, x, y, width, height, sx, xy, sWidth, sHeight);
+                    this.getContext().drawImage(image, ...args);
 
                     resolve();
                 })
