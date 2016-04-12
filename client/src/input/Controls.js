@@ -48,6 +48,7 @@ export class Controls {
      * @param {number} keycode
      * @param {string} type
      * @param {Function} callback
+     * @returns {Controls}
      */
     addListener(keycode, type, callback) {
         if (undefined === this.listeners[keycode]) {
@@ -59,6 +60,8 @@ export class Controls {
         }
 
         this.listeners[keycode][type].push(callback);
+
+        return this;
     }
 
     /**
@@ -75,8 +78,12 @@ export class Controls {
 
     /**
      * Remove all listeners
+     *
+     * @returns {Controls}
      */
     reset() {
         this.listeners = {};
+
+        return this;
     }
 }
