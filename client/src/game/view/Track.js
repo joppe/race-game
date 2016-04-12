@@ -12,7 +12,14 @@ export class Track extends Backbone.View {
      * @returns {string}
      */
     className() {
-        return 'c-canvas-wrapper';
+        return 'c-track';
+    }
+
+    /**
+     * @returns {string}
+     */
+    tagName() {
+        return 'canvas';
     }
 
     /**
@@ -21,6 +28,7 @@ export class Track extends Backbone.View {
     constructor(options) {
         super(options);
 
+        /*
         this.foreground = new Canvas(WIDTH, HEIGHT);
         this.background = new Canvas(WIDTH, HEIGHT);
 
@@ -39,13 +47,16 @@ export class Track extends Backbone.View {
                 this.model.set('error', error);
             })
         ;
+        /**/
     }
 
     /**
      * @returns {Track}
      */
     render() {
-        this.foreground.appendTo(this.el);
+        // this.foreground.appendTo(this.el);
+        this.$el.attr('width', WIDTH);
+        this.$el.attr('height', HEIGHT);
 
         return this;
     }
