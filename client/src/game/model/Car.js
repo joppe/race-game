@@ -14,7 +14,8 @@ export class Car extends Backbone.Model {
     defaults() {
         return {
             position: new Point(0, 0),
-            speed: new Vector(0, 0)
+            direction: new Vector(0, 0),
+            speed: 0
         };
     }
 }

@@ -1,13 +1,14 @@
 import {Canvas} from './../../dom/Canvas.js';
 import Backbone from 'backbone';
 
-const WIDTH = 670,
-    HEIGHT = 503;
+const WIDTH = 800,
+    HEIGHT = 397,
+    SCALE = 0.04;
 
 /**
- * @class Track
+ * @class Car
  */
-export class Track extends Backbone.View {
+export class Car extends Backbone.View {
     /**
      * @returns {string}
      */
@@ -22,18 +23,10 @@ export class Track extends Backbone.View {
         super(options);
 
         this.foreground = new Canvas(WIDTH, HEIGHT);
-        this.background = new Canvas(WIDTH, HEIGHT);
 
-        this.foreground.drawImage('img/track.jpg', 0, 0)
+        this.foreground.drawImage('img/car.png', 0, 0, WIDTH, HEIGHT, 0, 0, SCALE * WIDTH, SCALE * HEIGHT)
             .then(() => {
-                this.background.drawImage('img/resistance.png', 0, 0)
-                    .then(() => {
-                        this.model.set('trackReady', true);
-                    })
-                    .catch((error) => {
-                        this.model.set('error', error);
-                    })
-                ;
+                this.model.set('carReady', true);
             })
             .catch((error) => {
                 this.model.set('error', error);
@@ -42,7 +35,7 @@ export class Track extends Backbone.View {
     }
 
     /**
-     * @returns {Track}
+     * @returns {Car}
      */
     render() {
         this.foreground.appendTo(this.el);

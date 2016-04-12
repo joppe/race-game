@@ -10,8 +10,10 @@ export class State extends Backbone.Model {
      */
     defaults() {
         return {
-            cars: new Cars(),
-            state: null
+            error: null,
+            trackReady: false,
+            carReady: false,
+            cars: new Cars()
         };
     }
 }
