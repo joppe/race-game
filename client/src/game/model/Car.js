@@ -35,6 +35,20 @@ export class Car extends Backbone.Model {
     }
 
     /**
+     * @param {number} amount
+     * @returns {Car}
+     */
+    turn(amount) {
+        let direction = this.get('direction');
+
+        direction = direction.rotate(amount);
+
+        this.set('direction', direction);
+
+        return this;
+    }
+
+    /**
      * This method calculates the new speed/position of the car
      */
     tick() {

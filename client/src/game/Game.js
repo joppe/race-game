@@ -18,21 +18,23 @@ export class Game {
         this.car.set('friction', 1);
 
         this.controls = new Controls();
-        this.controls.addListener(
-            this.controls.findCode('up'),
-            'keydown',
-            () => {
-                window.console.log('start accelerating');
-                this.car.accelerate(5);
-            }
-        );
-        this.controls.addListener(
-            this.controls.findCode('up'),
-            'keyup',
-            () => {
-                window.console.log('stop accelerating');
-            }
-        );
+        this.controls
+            .addListener(
+                this.controls.findCode('up'),
+                'keydown',
+                () => {
+                    window.console.log('start accelerating');
+                    this.car.accelerate(5);
+                }
+            )
+            .addListener(
+                this.controls.findCode('up'),
+                'keyup',
+                () => {
+                    window.console.log('stop accelerating');
+                }
+            )
+        ;
     }
 
     /**

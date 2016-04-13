@@ -1,79 +1,59 @@
 /**
- * @param {number} degrees
- * @returns {number}
- */
-function degreesToRadians(degrees) {
-    return degrees * (Math.PI / 180);
-}
-
-/**
- * @param {number} radians
- * @returns {number}
- */
-function radiansToDegrees(radians) {
-    return radians * (180 / Math.PI);
-}
-
-/**
  * @class Vector
  */
 export class Vector {
     /**
      * @param {number} size
-     * @param {number} degrees
+     * @param {number} angle
      */
-    constructor(size, degrees) {
+    constructor(size, angle) {
         this.size = size;
-        this.degrees = degrees;
+        this.angle = angle;
     }
 
     /**
      * @returns {number}
      */
     get x() {
-        let radians = degreesToRadians(this.degrees);
-
-        return Math.cos(radians).toFixed(10) * this.size;
+        return Math.cos(this.angle.angle).toFixed(10) * this.size;
     }
 
     /**
      * @returns {number}
      */
     get y() {
-        let radians = degreesToRadians(this.degrees);
-
-        return Math.sin(radians).toFixed(10) * this.size;
+        return Math.sin(this.angle.angle).toFixed(10) * this.size;
     }
 
     /**
-     * @param {number} degrees
+     * @param {number} angle
      * @returns {Vector}
      */
-    rotate(degrees) {
-        return new Vector(this.size, this.degrees + degrees);
+    rotate(angle) {
+        return new Vector(this.size, this.angle + angle);
     }
 
     /**
      * @returns {Vector}
      */
     copy() {
-        return new Vector(this.size, this.degrees);
+        return new Vector(this.size, this.angle);
     }
 
     /**
      * @returns {string}
      */
     toString() {
-        return `size: ${this.size}; degrees: ${this.degrees}; radians: ${degreesToRadians(this.degrees)}`;
+        return `size: ${this.size}; angle: ${this.angle};`;
     }
 
     /**
-     * @returns {{size: (number|*), degrees: (number|*)}}
+     * @returns {{size: (number|*), angle: (number|*)}}
      */
     raw() {
         return {
             size: this.size,
-            degrees: this.degrees
+            angle: this.angle
         };
     }
 
@@ -82,8 +62,6 @@ export class Vector {
      * @returns {Vector}
      */
     static createFromRaw(raw) {
-        return new Vector(raw.size, raw.degrees);
+        return new Vector(raw.size, raw.angle);
     }
 }
-
-export {degreesToRadians, radiansToDegrees};
