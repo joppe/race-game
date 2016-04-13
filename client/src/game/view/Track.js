@@ -1,8 +1,6 @@
 import {Canvas} from './../../dom/Canvas.js';
 import Backbone from 'backbone';
 
-const WIDTH = 670,
-    HEIGHT = 503;
 
 /**
  * @class Track
