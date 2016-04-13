@@ -1,37 +1,38 @@
-import {Listenable} from './../../event/Listenable.js';
 import {Loader} from './../../image/Loader.js';
 
 /**
  * @class CanvasImage
  */
-export class CanvasImage extends Listenable {
+export class CanvasImage {
     /**
      * @param {CanvasRenderingContext2D} canvas
      * @param {string} src
      */
     constructor(canvas, src) {
-        super();
-
         this.loaded = false;
         this.canvas = canvas;
         this.src = src;
     }
 
     /**
-     * Preload the image
+     * @returns {Promise}
      */
     preload() {
-        if (true === this.loaded) {
-            return;
-        }
+        return new Promise((resolve, reject) => {
+            if (true === this.loaded) {
+                resolve();
+            } else {
+                Loader
+                    .load(this.src)
+                    .then(() => {
+                        this.loaded = true;
 
-        Loader
-            .load(this.src)
-            .then(() => {
-                this.loaded = true;
-                this.trigger('loaded');
-            })
-        ;
+                        resolve();
+                    })
+                    .catch(reject)
+                ;
+            }
+        });
     }
 
     /**
