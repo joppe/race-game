@@ -1,5 +1,3 @@
-import {Loader} from './../image/Loader.js';
-
 /**
  * @class Canvas
  */
@@ -50,37 +48,14 @@ export class Canvas {
     }
 
     /**
-     * @param {Point} point
+     * @param {Point} position
      * @param {number} width
      * @param {number} height
      * @returns {CanvasPixelArray}
      */
-    getImageData(point, width, height) {
-        let imageData = this.getContext().getImageData(point.x, point.y, width, height);
+    getImageData(position, width, height) {
+        let imageData = this.getContext().getImageData(position.x, position.y, width, height);
 
         return imageData.data;
-    }
-
-    /**
-     * @param {string} src
-     * @param {Array} args
-     * @returns {Promise}
-     */
-    drawImage(src, ...args) {
-        return new Promise((resolve, reject) => {
-            Loader
-                .load(src)
-                .then(() => {
-                    let image = new Image();
-
-                    image.setAttribute('src', src);
-
-                    this.getContext().drawImage(image, ...args);
-
-                    resolve();
-                })
-                .catch(reject)
-            ;
-        });
     }
 }
