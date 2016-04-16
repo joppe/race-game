@@ -1,5 +1,5 @@
 import {Canvas} from './../../dom/Canvas.js';
-import Backbone from 'backbone';
+import {CanvasView} from './CanvasView.js';
 
 const WIDTH = 800,
     HEIGHT = 397,
@@ -8,14 +8,7 @@ const WIDTH = 800,
 /**
  * @class Car
  */
-export class Car extends Backbone.View {
-    /**
-     * @returns {string}
-     */
-    className() {
-        return 'c-canvas-wrapper';
-    }
-
+export class Car extends CanvasView {
     /**
      * @param {Object} options
      */
@@ -35,11 +28,8 @@ export class Car extends Backbone.View {
     }
 
     /**
-     * @returns {Car}
+     * @param {CanvasRenderingContext2D} context
      */
-    render() {
-        this.foreground.appendTo(this.el);
-
-        return this;
+    draw(context) {
     }
 }

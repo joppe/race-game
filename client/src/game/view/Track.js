@@ -1,23 +1,15 @@
-import {Canvas} from './../../dom/Canvas.js';
-import Backbone from 'backbone';
-
+import {CanvasView} from './CanvasView.js';
+import {CanvasImage} from './../../dom/canvas/CanvasImage.js';
 
 /**
  * @class Track
  */
-export class Track extends Backbone.View {
+export class Track extends CanvasView {
     /**
      * @returns {string}
      */
     className() {
         return 'c-track';
-    }
-
-    /**
-     * @returns {string}
-     */
-    tagName() {
-        return 'canvas';
     }
 
     /**
@@ -46,16 +38,5 @@ export class Track extends Backbone.View {
             })
         ;
         /**/
-    }
-
-    /**
-     * @returns {Track}
-     */
-    render() {
-        // this.foreground.appendTo(this.el);
-        this.$el.attr('width', WIDTH);
-        this.$el.attr('height', HEIGHT);
-
-        return this;
     }
 }

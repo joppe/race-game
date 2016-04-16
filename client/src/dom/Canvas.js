@@ -38,6 +38,13 @@ export class Canvas {
     }
 
     /**
+     * @returns {Element}
+     */
+    getElement() {
+        return this.el;
+    }
+
+    /**
      * @returns {Canvas}
      */
     clear() {

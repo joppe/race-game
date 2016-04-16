@@ -10,10 +10,13 @@ export class Game {
     /**
      * Constructor
      */
-    constructor() {
-        this.canvases = {
-            track: new Track(WIDTH, HEIGHT)
-        };
+    constructor($container) {
+        let track = new Track({
+            width: WIDTH,
+            height: HEIGHT
+        });
+
+        $container.append(track.render().el);
     }
 
     /**
