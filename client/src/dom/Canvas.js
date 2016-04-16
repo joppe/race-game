@@ -38,6 +38,15 @@ export class Canvas {
     }
 
     /**
+     * @returns {Canvas}
+     */
+    clear() {
+        this.getContext().clearRect(0, 0, this.width, this.height);
+
+        return this;
+    }
+
+    /**
      * @param {HTMLElement} target
      * @returns {Canvas}
      */
